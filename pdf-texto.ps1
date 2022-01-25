@@ -9,6 +9,7 @@ foreach( $item in Get-ChildItem $args[0])
         $doc.SaveAs($item.fullname+".txt", $format)
         $doc.Close()
         $texto = $item.fullname+".txt"
+        Add-Content -Value "EOF" -Path $texto
         Get-Content $texto | Out-File -Append file.txt -Encoding UTF8 -ErrorAction Stop
         $contador++
 Remove-Item $texto

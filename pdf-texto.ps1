@@ -1,18 +1,18 @@
-Write-Host "Trabajando..."
 $contador = 0
 $word = New-Object -comobject Word.Application
 $Format = [Microsoft.Office.Interop.Word.WdSaveFormat]::wdFormatUnicodeText
+Write-Host "Trabajando..."
 foreach( $item in Get-ChildItem $args[0])
 {
-    if ($item.fullname -match '.+\.(docx|pdf)$'){
-$doc = $word.Documents.Open($item.fullname)
-$doc.SaveAs($item.fullname+".txt", $format)
-$doc.Close()
-$nombre = $item.fullname+".txt"
-Get-Content $nombre | Add-Content file.txt -Encoding UTF8
-Remove-Item $nombre
-$contador++
+    if ($item.fullname -match '.+\.(doc|rtf|docx|pdf)$'){
+        $doc = $word.Documents.Open($item.fullname)
+        $doc.SaveAs($item.fullname+".txt", $format)
+        $doc.Close()
+        $texto = $item.fullname+".txt"
+        Get-Content $texto | Out-File -Append file.txt -Encoding UTF8 -ErrorAction Stop
+        $contador++
+Remove-Item $texto
     }
 }
-$word.Quit()
 Write-Host ("Listo. Se han convertido " + $contador.ToString() + " archivos.")
+$word.Quit()

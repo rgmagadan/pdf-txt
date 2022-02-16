@@ -1,12 +1,9 @@
 # pdf-txt
 
-Script en Powershell para convertir documentos a texto plano.
+Scripts en Powershell para convertir documentos a texto plano.
 
-- Coloca el ps1 en cualquier directorio del disco.
-- En el bat, especifica la ruta del ps1 (las comillas deben quedar puestas).
-- Copia el bat en c:/windows.
-- En PowerShell, sitúate en cualquier carpeta que contenga los documentos a convertir.
-- Ejecuta: pdf-txt.bat.
-- En la carpeta se creará file.txt con el texto de todos los documentos.
+- Convert-all-docs pasa a un solo archivo txt todos los documentos de la carpeta en la que se ejecuta.
+- Convert-doc convierte a txt el archivo cuya ruta se le pasa como parámetro.
+- Para ejecutar más cómodamente los scripts se recomienda crear sendos alias en el profile de Powershell.
 - Si no se ejecuta el script, abre PowerShell como administrador y pega lo siguiente para dar los permisos necesarios:
 Set-ExecutionPolicy RemoteSigned
